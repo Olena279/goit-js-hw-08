@@ -64,38 +64,36 @@ const images = [
   },
 ];
 
-const сontainer = document.querySelector(`.images`);
-сontainer.insertAdjacentHTML(`beforeend`, createMarkup(images));
-container.addEventListener(`click`, handleClick);
+const galleryContainer = document.querySelector(`.gallery`);
 
-function createMarkup(arr) {
-  return arr
-    .map(
-      image => `
-      <li class="gallery-item">
-  <a class="gallery-link" href="${image.original}">
+const galleryMarkup = images
+  .map(
+    ({ preview, original, description }) => `
+  <li class="gallery-item">
+  <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
-      src="${image.preview}"
-      data-source="${image.original}"
-      alt="${image.description}"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
     />
   </a>
 </li>`
-    )
-    .join('');
-}
+  )
+  .join('');
 
-function handleClick(event) {
+galleryContainer.insertHTML = galleryMarkup;
+
+galleryContainer.addEventListener(`click`, event => {
   event.preventDefault();
 
   if (event.target.nodeName !== `IMG`) return;
 
-  const originalImagesSrc = event.target.dataset.source;
+  const originalImage = event.target.dataset.source;
   const instance = basicLightbox.create(`
     <div class="modal">
-        <img src="${originalImagesSrc}" width="1112" height="640">                    
+        <img src="${originalImage}" width="1112" height="640" alt="">                    
     </div>
 `);
   instance.show();
-}
+});
