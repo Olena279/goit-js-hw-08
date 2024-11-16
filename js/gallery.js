@@ -82,18 +82,15 @@ const galleryMarkup = images
   )
   .join('');
 
-galleryContainer.insertHTML = galleryMarkup;
+galleryContainer.innertHTML = galleryMarkup;
 
 galleryContainer.addEventListener(`click`, event => {
   event.preventDefault();
 
   if (event.target.nodeName !== `IMG`) return;
 
-  const originalImage = event.target.dataset.source;
   const instance = basicLightbox.create(`
-    <div class="modal">
-        <img src="${originalImage}" width="1112" height="640" alt="">                    
-    </div>
-`);
+            <img src="${event.target.dataset.source}" width="1112" height="640" alt="">                    
+    `);
   instance.show();
 });

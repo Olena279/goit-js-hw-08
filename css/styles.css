@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   gap: 24px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 0;
   justify-content: center;
 }
 
@@ -13,13 +13,18 @@
 }
 
 .gallery-image {
+  display: block;
   width: 100%;
   height: auto;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: transform 0.2s;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gallery-image:hover {
   transform: scale(1.05);
+}
+
+.basicLightbox {
+  cursor: zoom-out;
 }
