@@ -64,9 +64,9 @@ const images = [
   },
 ];
 
-const galleryContainer = document.querySelector(`.images`);
-galleryContainer.insertAdjacentHTML(`beforeend`, createMarkup(images));
-galleryContainer.addEventListener(`click`, handleClick);
+const сontainer = document.querySelector(`.images`);
+сontainer.insertAdjacentHTML(`beforeend`, createMarkup(images));
+container.addEventListener(`click`, handleClick);
 
 function createMarkup(arr) {
   return arr
