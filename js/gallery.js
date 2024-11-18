@@ -82,7 +82,7 @@ const galleryMarkup = images
   )
   .join('');
 
-galleryContainer.innertHTML = galleryMarkup;
+galleryContainer.innerHTML = galleryMarkup;
 
 galleryContainer.addEventListener(`click`, event => {
   event.preventDefault();
